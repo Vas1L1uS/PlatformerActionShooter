@@ -1,5 +1,5 @@
 ﻿public interface IDamager
 {
-    float Damage { get; set; }
+    int Damage { get; set; }
     void TakeDamage(IHealth target);
 }

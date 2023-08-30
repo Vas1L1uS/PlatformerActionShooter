@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7583130967628165770}
   - component: {fileID: 3851550654067171369}
   - component: {fileID: 6242971132664589463}
-  m_Layer: 10
+  m_Layer: 2
   m_Name: Bullet_player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _trackParticleSystem: {fileID: 6518860327885140029}
   _boomParticleSystem: {fileID: 177192125789944443, guid: 8dac8c7127344c84f9eef1d4eccf6ded, type: 3}
-  _damage: 0
+  _damage: 1
   _timerToDestroy: 1
   _render: {fileID: 8348902548486647174}
 --- !u!114 &6242971132664589463
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 2682574006053764520}
   - component: {fileID: 6518860327885140029}
   - component: {fileID: 2807038090928297731}
-  m_Layer: 10
+  m_Layer: 2
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4967,7 +4967,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5093536723826916592}
   - component: {fileID: 3826376809852945774}
-  m_Layer: 10
+  m_Layer: 2
   m_Name: Render
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4984,7 +4984,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3289512381776839534}
@@ -5030,8 +5030,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.5998887, b: 0.5235849, a: 1}
+  m_Sprite: {fileID: 21300000, guid: e7980a08b8e9f3c4bbe56762604cba98, type: 3}
+  m_Color: {r: 1, g: 0.49980372, b: 0.3254717, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

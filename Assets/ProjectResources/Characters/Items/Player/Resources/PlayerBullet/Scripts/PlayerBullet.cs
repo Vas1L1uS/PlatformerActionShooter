@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour, IDamager
 {
+    public int Damage { get => _damage; set => _damage = value; }
+
     [SerializeField] private ParticleSystem _trackParticleSystem;
     [SerializeField] private ParticleSystem _boomParticleSystem;
-    [SerializeField] private float _damage;
+    [SerializeField] private int _damage;
     [SerializeField] private float _timerToDestroy;
     [SerializeField] private GameObject _render;
-
-    public float Damage { get => _damage; set => _damage = value; }
 
     private Collider2D _myCollider;
     private Rigidbody2D _myRB;
@@ -28,11 +28,14 @@ public class PlayerBullet : MonoBehaviour, IDamager
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Player"))
+        {
+            return;
+        }
+
         Instantiate(_boomParticleSystem, this.transform.position, Quaternion.identity);
 
-        IHealth target;
-
-        if (collision.TryGetComponent<IHealth>(out target))
+        if (collision.TryGetComponent<IHealth>(out var target))
         {
             target.GetDamage(Damage);
         }
