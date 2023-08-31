@@ -6,10 +6,20 @@ public class PlayerController : MonoBehaviour
 {
     public int MaxStockBullet { get => _maxStockBullet; private set => _maxStockBullet = value; }
     public int BulletLeft { get => _bulletLeft; private set => _bulletLeft = value; }
+    public PlayerAnimState PlayerState
+    {
+        get => _playerState;
+        private set
+        {
+            _playerState = value;
+            PlayerStateChanged_notifier?.Invoke(this, EventArgs.Empty);
+        }
+    }
 
     public event EventHandler Shoot_notifier;
     public event EventHandler ReadyToShoot_notifier;
     public event EventHandler Reload_notifier;
+    public event EventHandler PlayerStateChanged_notifier;
 
     [Header("Movement settings")]
     [SerializeField] private float _speed;
