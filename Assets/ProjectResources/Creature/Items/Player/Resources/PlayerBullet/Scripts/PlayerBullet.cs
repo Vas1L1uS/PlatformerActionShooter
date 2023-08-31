@@ -10,6 +10,7 @@ public class PlayerBullet : MonoBehaviour, IDamager
     [SerializeField] private int _damage;
     [SerializeField] private float _timerToDestroy;
     [SerializeField] private GameObject _render;
+    [SerializeField] private LayerMask _collisionMask;
 
     private Collider2D _myCollider;
     private Rigidbody2D _myRB;
@@ -28,10 +29,16 @@ public class PlayerBullet : MonoBehaviour, IDamager
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (_collisionMask != collision.gameObject.layer)
+        {
+            return;
+        }
+
         if (collision.CompareTag("Player"))
         {
             return;
         }
+
 
         Instantiate(_boomParticleSystem, this.transform.position, Quaternion.identity);
 

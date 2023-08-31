@@ -116,6 +116,9 @@ MonoBehaviour:
   _damage: 1
   _timerToDestroy: 1
   _render: {fileID: 8348902548486647174}
+  _collisionMask:
+    serializedVersion: 2
+    m_Bits: 123
 --- !u!114 &6242971132664589463
 MonoBehaviour:
   m_ObjectHideFlags: 0
