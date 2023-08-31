@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public int MaxStockBullet { get => _maxStockBullet; private set => _maxStockBullet = value; }
+    public int BulletLeft { get => _bulletLeft; private set => _bulletLeft = value; }
+
+    public event EventHandler Shoot_notifier;
+    public event EventHandler ReadyToShoot_notifier;
+    public event EventHandler Reload_notifier;
+
     [Header("Movement settings")]
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
@@ -34,7 +41,6 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D _myRB;
     private PlayerInput _input;
-
     private Coroutine _reloadCoroutine;
 
     private void Awake()
@@ -105,9 +111,12 @@ public class PlayerController : MonoBehaviour
         GameObject newBullet = Instantiate(_bullet_prefab, _bulletSpawnPoint.position, Quaternion.identity);
         newBullet.GetComponent<Rigidbody2D>().velocity = new Vector3(_bulletSpeed * directionFactor, 0, 0);
         _bulletLeft --;
+        Shoot_notifier?.Invoke(this, EventArgs.Empty);
 
         if (_bulletLeft <= 0)
+        {
             _reloadCoroutine = StartCoroutine(ShootReload(_reloadTime));
+        }
     }
 
     private void HorizontalMove(float direction)
@@ -170,8 +179,10 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator ShootReload(float reloadTime)
     {
+        Reload_notifier?.Invoke(this, EventArgs.Empty);
         yield return new WaitForSeconds(reloadTime);
         _bulletLeft = _maxStockBullet;
+        ReadyToShoot_notifier?.Invoke(this, EventArgs.Empty);
     }
 
     private void OnEnable()
