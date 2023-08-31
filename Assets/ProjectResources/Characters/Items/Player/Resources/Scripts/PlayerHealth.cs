@@ -31,6 +31,7 @@ public class PlayerHealth : MonoBehaviour, IHealth
             }
         }
     }
+    public float TimeNoDamage { get => _timeNoDamage; private set => _timeNoDamage = value; }
 
     [SerializeField] private int _maxHealth;
     [SerializeField] private float _timeNoDamage;

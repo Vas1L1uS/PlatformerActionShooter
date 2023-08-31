@@ -12,7 +12,7 @@ public class PlayerAmmoUI : MonoBehaviour
 
     private bool _reload;
     private Color _image_startColor;
-    private Coroutine _reloadCoroutine;
+    private Coroutine _reload_coroutine;
 
     private void Awake()
     {
@@ -47,13 +47,13 @@ public class PlayerAmmoUI : MonoBehaviour
     private void Reload(object sender, EventArgs e)
     {
         _reload = true;
-        _reloadCoroutine = StartCoroutine(ReloadTimer(_flickerFrequency));
+        _reload_coroutine = StartCoroutine(ReloadTimer(_flickerFrequency));
     }
 
     private void ReadyToShoot(object sender, EventArgs e)
     {
         _reload = false;
-        StopCoroutine(_reloadCoroutine);
+        StopCoroutine(_reload_coroutine);
 
         for (int i = 0; i < _ammo_images_list.Count; i++)
         {
