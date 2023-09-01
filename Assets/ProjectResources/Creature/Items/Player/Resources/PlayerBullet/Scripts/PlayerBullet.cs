@@ -1,4 +1,6 @@
+﻿using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour, IDamager
@@ -29,7 +31,7 @@ public class PlayerBullet : MonoBehaviour, IDamager
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (_collisionMask != collision.gameObject.layer)
+        if (StandartMethods.CheckBitInNumber(collision.gameObject.layer, _collisionMask) == false)
         {
             return;
         }
