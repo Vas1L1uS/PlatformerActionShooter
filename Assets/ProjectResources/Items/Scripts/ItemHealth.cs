@@ -6,7 +6,7 @@ public class ItemHealth : PickableItem
 
     protected override void CheckAndPick(GameObject player)
     {
-        if (player.TryGetComponent<PlayerHealth>(out var playerHealth))
+        if (player.TryGetComponent<IHealth>(out var playerHealth))
         {
             if (playerHealth.CurrentHealth != playerHealth.MaxHealth)
             {

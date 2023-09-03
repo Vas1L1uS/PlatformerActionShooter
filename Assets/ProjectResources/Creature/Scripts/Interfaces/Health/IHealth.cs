@@ -10,4 +10,5 @@ public interface IHealth
     int CurrentHealth { get; set; }
     void GetDamage(int damage);
     void GetHealth(int health);
+    void Die();
 }

@@ -5,7 +5,7 @@ public class DevToolPanel : MonoBehaviour
     [SerializeField] private Canvas _dev_canvas;
 
     [Header("Player")]
-    [SerializeField] private PlayerHealth _playerHealth;
+    [SerializeField] private IHealth _playerHealth;
 
     private DevActions _input;
 

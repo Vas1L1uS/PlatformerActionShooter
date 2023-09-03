@@ -1285,6 +1285,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7127707040603569311, guid: c7d8b5ef095ec1642b119b16564afe79, type: 3}
   m_PrefabInstance: {fileID: 879941372}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &896198081
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 896198082}
+  m_Layer: 0
+  m_Name: StopPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &896198082
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896198081}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 21.138, y: 2.704, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1187438037}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1041075126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1377,6 +1408,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 765998482}
+  - {fileID: 1187438037}
   m_Father: {fileID: 1490617823}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1104076717
@@ -1575,6 +1607,38 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.44, y: 7.2}
   m_EdgeRadius: 0
+--- !u!1 &1187438036
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1187438037}
+  m_Layer: 0
+  m_Name: StopPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1187438037
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187438036}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 896198082}
+  m_Father: {fileID: 1076941118}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1224679260
 GameObject:
   m_ObjectHideFlags: 0
@@ -1652,6 +1716,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.44, y: 1.44}
   m_EdgeRadius: 0
+--- !u!95 &1275637888 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2420685597452114572, guid: b3dd55b1e29ab79468466cfb46023c5e, type: 3}
+  m_PrefabInstance: {fileID: 1207745761725761404}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1345582252
 GameObject:
   m_ObjectHideFlags: 0
@@ -4829,6 +4898,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6783585811632596095, guid: 3cac603d2433b094d83fda5e87487206, type: 3}
   m_PrefabInstance: {fileID: 521427279}
   m_PrefabAsset: {fileID: 0}
+--- !u!320 &2105783904 stripped
+PlayableDirector:
+  m_CorrespondingSourceObject: {fileID: 117780238245815396, guid: b3dd55b1e29ab79468466cfb46023c5e, type: 3}
+  m_PrefabInstance: {fileID: 1207745761725761404}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2134788788
 GameObject:
   m_ObjectHideFlags: 0
@@ -4884,7 +4958,39 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1125996887516417090, guid: b3dd55b1e29ab79468466cfb46023c5e, type: 3}
       propertyPath: m_Name
-      value: NingaFrog
+      value: NinjaFrog
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475094504903181369, guid: b3dd55b1e29ab79468466cfb46023c5e, type: 3}
+      propertyPath: _damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475094504903181369, guid: b3dd55b1e29ab79468466cfb46023c5e, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 1275637888}
+    - target: {fileID: 1475094504903181369, guid: b3dd55b1e29ab79468466cfb46023c5e, type: 3}
+      propertyPath: _reloadTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475094504903181369, guid: b3dd55b1e29ab79468466cfb46023c5e, type: 3}
+      propertyPath: _timeNoDamage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475094504903181369, guid: b3dd55b1e29ab79468466cfb46023c5e, type: 3}
+      propertyPath: _attackTimeline
+      value: 
+      objectReference: {fileID: 2105783904}
+    - target: {fileID: 1475094504903181369, guid: b3dd55b1e29ab79468466cfb46023c5e, type: 3}
+      propertyPath: _damageDistance
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475094504903181369, guid: b3dd55b1e29ab79468466cfb46023c5e, type: 3}
+      propertyPath: _rightStopPoint
+      value: 
+      objectReference: {fileID: 896198081}
+    - target: {fileID: 1475094504903181369, guid: b3dd55b1e29ab79468466cfb46023c5e, type: 3}
+      propertyPath: _distanceToStartAttack
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2418624293296281754, guid: b3dd55b1e29ab79468466cfb46023c5e, type: 3}
       propertyPath: m_LocalPosition.x

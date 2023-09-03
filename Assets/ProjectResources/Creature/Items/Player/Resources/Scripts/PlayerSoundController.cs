@@ -10,7 +10,7 @@ public class PlayerSoundController : MonoBehaviour
     [SerializeField] private AudioClip _shoot;
 
     [Header("Health sound settings")]
-    [SerializeField] private PlayerHealth _playerHealth;
+    [SerializeField] private IHealth _playerHealth;
     [SerializeField] private AudioSource _health_AudioSource;
     [SerializeField] private AudioClip _damage;
 
