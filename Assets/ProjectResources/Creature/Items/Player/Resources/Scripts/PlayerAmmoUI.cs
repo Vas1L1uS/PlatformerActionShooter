@@ -18,9 +18,9 @@ public class PlayerAmmoUI : MonoBehaviour
     {
         _image_startColor = _ammo_images_list[1].color;
         EnableImagesMaxAmmo(_ammo_images_list);
-        _playerController.Shoot_notifier += RemoveBullet;
-        _playerController.Reload_notifier += Reload;
-        _playerController.ReadyToShoot_notifier += ReadyToShoot;
+        _playerController.ShootAttack.StartedAttack_notifier += RemoveBullet;
+        _playerController.ShootAttack.Reload_notifier += Reload;
+        _playerController.ShootAttack.ReadyToAttack_notifier += ReadyToShoot;
     }
 
     private void EnableImagesMaxAmmo(List<Image> images)
@@ -30,7 +30,7 @@ public class PlayerAmmoUI : MonoBehaviour
             image.enabled = false;
         }
 
-        for (int i = 0; i < _playerController.MaxStockBullet; i++)
+        for (int i = 0; i < _playerController.ShootAttack.MaxStockBullet; i++)
         {
             images[i].enabled = true;
         }
@@ -38,7 +38,7 @@ public class PlayerAmmoUI : MonoBehaviour
 
     private void RemoveBullet(object sender, EventArgs e)
     {
-        for (int i = _playerController.MaxStockBullet - 1; i >= _playerController.BulletLeft; i--)
+        for (int i = _playerController.ShootAttack.MaxStockBullet - 1; i >= _playerController.ShootAttack.BulletLeft; i--)
         {
             _ammo_images_list[i].color = new Color(0, 0, 0, 1);
         }

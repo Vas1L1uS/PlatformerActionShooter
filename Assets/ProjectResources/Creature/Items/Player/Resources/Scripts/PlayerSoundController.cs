@@ -10,13 +10,13 @@ public class PlayerSoundController : MonoBehaviour
     [SerializeField] private AudioClip _shoot;
 
     [Header("Health sound settings")]
-    [SerializeField] private IHealth _playerHealth;
+    [SerializeField] private PlayerHealth _playerHealth;
     [SerializeField] private AudioSource _health_AudioSource;
     [SerializeField] private AudioClip _damage;
 
     private void Awake()
     {
-        _playerController.Shoot_notifier += PlaySoundShoot;
+        _playerController.ShootAttack.StartedAttack_notifier += PlaySoundShoot;
         _playerHealth.GetDamage_notifier += PlaySoundAddHealth;
     }
 

@@ -17,29 +17,36 @@ public class NPCMovement : MonoBehaviour
         _myRB = this.GetComponent<Rigidbody2D>();
     }
 
-    public void Move(float direction)
+    public bool MoveToTarget(Vector2 targetPosition)
     {
-        _myRB.velocity = new Vector2(direction * _speed, _myRB.velocity.y);
-    }
+        int direction = 1;
 
-    public bool CheckStopPoints()
-    {
-        if (_leftStopPoint != null)
+        if (targetPosition.x < this.transform.position.x)
         {
+            direction = -1;
             if (this.transform.position.x < _leftStopPoint.transform.position.x)
             {
-                return true;
+                StopMove();
+                return false;
             }
         }
-        else if (_rightStopPoint != null)
+        else
         {
             if (this.transform.position.x > _rightStopPoint.transform.position.x)
             {
-                return true;
+                StopMove();
+                return false;
             }
         }
 
-        return false;
+        if (Math.Abs(targetPosition.x - this.transform.position.x) < 0.25f)
+        {
+            StopMove();
+            return false;
+        }
+
+        _myRB.velocity = new Vector2(direction * _speed, _myRB.velocity.y);
+        return true;
     }
 
     public void StopMove()

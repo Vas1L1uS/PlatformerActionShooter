@@ -177,7 +177,7 @@ MonoBehaviour:
   _playerController: {fileID: 137511458490246912}
   _shoot_AudioSource: {fileID: 6787926399357086932}
   _shoot: {fileID: 8300000, guid: 60c59d00fda64c041aa98835833bb010, type: 3}
-  _playerHealth: {fileID: 9135254349618154833}
+  _playerHealth: {fileID: 5753867961070472958}
   _health_AudioSource: {fileID: 2732939809857683188}
   _damage: {fileID: 8300000, guid: 8f11e5fe5557dd142bcc7f91b5c5b773, type: 3}
 --- !u!1 &2189358875530520341
@@ -221,7 +221,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2496038625834002928}
   - component: {fileID: 137511458490246912}
-  - component: {fileID: 9135254349618154833}
+  - component: {fileID: 5753867961070472958}
+  - component: {fileID: 2710571870490579410}
   - component: {fileID: 5638686068445735604}
   - component: {fileID: 8002635382934778248}
   - component: {fileID: 6741556271582610257}
@@ -240,7 +241,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2826195640457887790}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -265,11 +266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 5
   _jumpForce: 9
-  _bulletSpawnPoint: {fileID: 8197800239187644314}
-  _bullet_prefab: {fileID: 3415692725524921866, guid: f535414ee94d90e47bdcd504ccbf335c, type: 3}
-  _bulletSpeed: 10
-  _maxStockBullet: 3
-  _reloadTime: 2
+  _shootAttack: {fileID: 2710571870490579410}
   _groundChecker: {fileID: 6493225314080400644}
   _groundMask:
     serializedVersion: 2
@@ -278,12 +275,11 @@ MonoBehaviour:
   _playerAnimController: {fileID: 382297137303410635}
   _spriteRenderer: {fileID: 7798007682383780527}
   _enabledDebugLog: 0
-  _bulletLeft: 0
   _jumpsLeft: 0
   _isGrounded: 0
   _isFlipped: 0
   _playerState: 0
---- !u!114 &9135254349618154833
+--- !u!114 &5753867961070472958
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -292,15 +288,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 2826195640457887790}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdac76f4ffa879944981af1c5a378fb1, type: 3}
+  m_Script: {fileID: 11500000, guid: ca7beadf4bee98a40a530a3b1c010fe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 5
-  _timeNoDamage: 1
-  _enabledDebugLog: 0
+  _enabledPrintDebugLogInEditor: 0
+  _enabledAddingLogs: 0
   _currentHealth: 0
-  _invulnerability: 0
   _isAlive: 0
+  _isInvulnerability: 0
+  _timeNoDamage: 1
+--- !u!114 &2710571870490579410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2826195640457887790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2ddfb6af57a67d49a453b96850f4d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletSpawnPoint: {fileID: 8197800239187644314}
+  _bullet_prefab: {fileID: 3415692725524921866, guid: f535414ee94d90e47bdcd504ccbf335c, type: 3}
+  _bulletSpeed: 5
+  _maxStockBullet: 3
+  _reloadTime: 2
+  _distanceToStartAttack: 0
+  _targetTags: []
+  _targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _enabledPrintDebugLogInEditor: 0
+  _enabledAddingLogs: 0
+  _bulletLeft: 0
+  _leftShootDirection: 0
 --- !u!50 &5638686068445735604
 Rigidbody2D:
   serializedVersion: 4
@@ -534,7 +557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b688cec0610f3d447abcc1ce22f46bac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerHealth: {fileID: 9135254349618154833}
+  _playerHealth: {fileID: 5753867961070472958}
   _player_spriteRenderer: {fileID: 7798007682383780527}
   _flickerFrequency: 0.1
 --- !u!1 &4649598760544579367

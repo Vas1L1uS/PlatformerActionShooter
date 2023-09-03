@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerHealthUI : MonoBehaviour
 {
-    [SerializeField] private IHealth _playerHealth;
+    [SerializeField] private PlayerHealth _playerHealth;
     [SerializeField] private List<Image> _health_images_list;
 
     private void Awake()

@@ -12,6 +12,10 @@ GameObject:
   - component: {fileID: 7520238666975994443}
   - component: {fileID: 4753482532642254164}
   - component: {fileID: 1475094504903181369}
+  - component: {fileID: 7627615732067173058}
+  - component: {fileID: 3846469930900523114}
+  - component: {fileID: 7347921477010469567}
+  - component: {fileID: 422456147513688020}
   - component: {fileID: 4686346265411597814}
   m_Layer: 6
   m_Name: NinjaFrog
@@ -121,28 +125,88 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23476147f1bf5654c9cfc47cf08b7403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 5
-  _timeNoDamage: 1
-  _damage: 0
-  _speed: 4
+  _movement: {fileID: 3846469930900523114}
+  _vision: {fileID: 7347921477010469567}
+  _health: {fileID: 7627615732067173058}
+  _animator: {fileID: 2420685597452114572}
   _spriteRenderer: {fileID: 7417780117627382637}
-  _enabledDebugLog: 0
+  _attack_gameobject: {fileID: 1125996887516417090}
+  _currentState: 0
+--- !u!114 &7627615732067173058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125996887516417090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdac76f4ffa879944981af1c5a378fb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 5
+  _enabledPrintDebugLogInEditor: 0
+  _enabledAddingLogs: 0
   _currentHealth: 0
-  _invulnerability: 0
   _isAlive: 0
-  _isFlipped: 0
-  _attackTimeline: {fileID: 0}
-  _reloadTime: 0
-  _damageDistance: 0
-  _distanceToStartAttack: 0
-  _playerTag: Player
-  _creatureLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  _visionDistance: 3
+--- !u!114 &3846469930900523114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125996887516417090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43b0c10e1943fd449815f1501122dc3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 3
   _leftStopPoint: {fileID: 0}
   _rightStopPoint: {fileID: 0}
-  _animator: {fileID: 0}
+--- !u!114 &7347921477010469567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125996887516417090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4b570cfda53b664c97fe0fc9e4a1583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _triggerTags:
+  - Player
+  _triggerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _visionBoxSize: {x: 8, y: 1}
+  _nearestTrigger: {fileID: 0}
+  _allDetectedTrigger_list: []
+  _lastTargetPosition: {x: 0, y: 0}
+--- !u!114 &422456147513688020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125996887516417090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e013c4b27cd9037409a224701a3b8c4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackTimeline: {fileID: 117780238245815396}
+  _damage: 1
+  _reloadTime: 2
+  _damageDistance: 0.6
+  _distanceToStartAttack: 1
+  _targetTags:
+  - Player
+  _targetLayer:
+    serializedVersion: 2
+    m_Bits: 64
   _isReadyToAttack: 0
 --- !u!114 &4686346265411597814
 MonoBehaviour:
@@ -159,12 +223,27 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: 24bd2d35b8d3e05458efe22664a80a9d, type: 2}
+    - {fileID: 11400000, guid: d230ec143c1d891438bb61740ffb8b25, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1475094504903181369}
-          m_TargetAssemblyTypeName: NingaFrog, Assembly-CSharp
-          m_MethodName: TakeDamageToCreautesInDamageZone
+        - m_Target: {fileID: 422456147513688020}
+          m_TargetAssemblyTypeName: MeleeAttack, Assembly-CSharp
+          m_MethodName: TakeDamageToTargetsInDamageDistance
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 422456147513688020}
+          m_TargetAssemblyTypeName: MeleeAttack, Assembly-CSharp
+          m_MethodName: FinishAttack
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -405,9 +484,9 @@ PlayableDirector:
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: 2847998483943668271, guid: 796dc77cc2b1b674c921ae78139610fe, type: 2}
-    value: {fileID: 8535267781942215624}
   - key: {fileID: -8585964159650693429, guid: 796dc77cc2b1b674c921ae78139610fe, type: 2}
+    value: {fileID: 4686346265411597814}
+  - key: {fileID: -2526694788275088675, guid: 796dc77cc2b1b674c921ae78139610fe, type: 2}
     value: {fileID: 4686346265411597814}
   m_ExposedReferences:
     m_References: []

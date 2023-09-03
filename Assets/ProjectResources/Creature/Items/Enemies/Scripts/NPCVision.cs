@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class NPCVision : MonoBehaviour
 {
-    public event EventHandler detected_notifier;
+    public event EventHandler Detected_notifier;
 
     public GameObject NearestDetectedTrigger { get => _nearestTrigger; private set => _nearestTrigger = value; }
     public List<GameObject> AllDetectedTrigger_list { get => _allDetectedTrigger_list; private set => _allDetectedTrigger_list = value; }
+    public Vector2 LastTargetPosition { get => _lastTargetPosition; set => _lastTargetPosition = value; }
 
     [SerializeField] private List<string> _triggerTags;
     [SerializeField] private LayerMask _triggerLayer;
@@ -17,78 +17,29 @@ public class NPCVision : MonoBehaviour
     [Header("Debug")]
     [SerializeField] private GameObject _nearestTrigger;
     [SerializeField] private List<GameObject> _allDetectedTrigger_list;
-
-    private Rigidbody2D _myRB;
+    [SerializeField] private Vector2 _lastTargetPosition;
 
     private void Awake()
     {
         _allDetectedTrigger_list = new List<GameObject>();
     }
 
-    public void CheckTriggersInVisionZone()
+    public bool CheckTriggersInVisionZone()
     {
-        RaycastHit2D[] hits = Physics2D.BoxCastAll(this.transform.position, _visionBoxSize, 0, Vector2.zero, 10, _triggerLayer);
-        AllDetectedTrigger_list = GetHitsByTags(_triggerTags, hits);
-        NearestDetectedTrigger = GetNearestDetectedTrigger();
-    }
-
-    private GameObject GetNearestDetectedTrigger()
-    {
-        if (AllDetectedTrigger_list.Count > 0)
+        if (NearestDetectedTrigger != null)
         {
-            GameObject nearestTrigger = AllDetectedTrigger_list[0];
-            float nearestDistance = float.MaxValue;
-
-            foreach (var trigger in AllDetectedTrigger_list)
-            {
-                var currentDistance = Vector2.Distance(this.transform.position, trigger.transform.position);
-
-                if (currentDistance < nearestDistance)
-                {
-                    nearestDistance = currentDistance;
-                    nearestTrigger = trigger;
-                }
-            }
-
-            return nearestTrigger;
+            LastTargetPosition = NearestDetectedTrigger.transform.position;
         }
 
-        return null;
-    }
+        AllDetectedTrigger_list = StandartMethods.GetObjectsInBoxZoneByTagsAndLayerMask(this.transform.position, _visionBoxSize, _triggerTags, _triggerLayer);
+        NearestDetectedTrigger = StandartMethods.GetNearestObject(this.transform.position, AllDetectedTrigger_list);
 
-    private List<GameObject> GetHitsByTags(List<string> tags, RaycastHit2D[] hits)
-    {
-        List<GameObject> result = new List<GameObject>();
-
-        foreach (var item in hits)
+        if (NearestDetectedTrigger != null)
         {
-            if (CompareTags(tags, item.collider.gameObject))
-            {
-                result.Add(item.collider.gameObject);
-            }
-            else
-            {
-                continue;
-            }
+            Detected_notifier?.Invoke(this, EventArgs.Empty);
+            return true;
         }
 
-        return result;
-
-        bool CompareTags(List<string> tags, GameObject gameObject)
-        {
-            foreach (var tag in tags)
-            {
-                if (gameObject.CompareTag(tag))
-                {
-                    return true;
-                }
-                else
-                {
-                    continue;
-                }
-            }
-
-            return false;
-        }
+        return false;
     }
 }

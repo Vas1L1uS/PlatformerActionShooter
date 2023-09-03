@@ -5,7 +5,7 @@ using static PlayerController;
 
 public class PlayerAnimController : MonoBehaviour
 {
-    [SerializeField] private IHealth _playerHealth;
+    [SerializeField] private PlayerHealth _playerHealth;
     [SerializeField] private SpriteRenderer _player_spriteRenderer;
     [SerializeField] private float _flickerFrequency;
 

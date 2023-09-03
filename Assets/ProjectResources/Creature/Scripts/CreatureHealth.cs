@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -42,7 +41,6 @@ public class CreatureHealth : MonoBehaviour, IHealth, IDebugLogger
     [SerializeField] private bool _enabledPrintDebugLogInEditor;
     [SerializeField] private bool _enabledAddingLogs;
     [SerializeField] private int _currentHealth;
-    [SerializeField] private bool _invulnerability;
     [SerializeField] private bool _isAlive;
 
     private List<GameobjectLog> _gameobjectLog_list;
@@ -58,12 +56,6 @@ public class CreatureHealth : MonoBehaviour, IHealth, IDebugLogger
     {
         if (IsAlive == false)
         {
-            return;
-        }
-
-        if (_invulnerability)
-        {
-            //PrintLogInEditor($"{this.gameObject.name} is not damaged because he is invulnerable.");
             return;
         }
 
@@ -97,6 +89,8 @@ public class CreatureHealth : MonoBehaviour, IHealth, IDebugLogger
     {
         _isAlive = false;
         Dead_notifier?.Invoke(this, EventArgs.Empty);
+
+        Destroy(this.gameObject);
 
         PrintLogInEditor($"{this.gameObject.name} killed.");
     }

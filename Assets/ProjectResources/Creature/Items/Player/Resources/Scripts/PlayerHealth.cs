@@ -5,20 +5,20 @@ using UnityEngine;
 
 public class PlayerHealth : CreatureHealth, IHaveInvulnerability
 {
-    public override event EventHandler Dead_notifier;
     public override event EventHandler GetDamage_notifier;
-    public override event EventHandler GetHealth_notifier;
 
-    public bool IsInvulnerability { get => _IsInvulnerability; set => _IsInvulnerability = value; }
+    public bool IsInvulnerability { get => _isInvulnerability; set => _isInvulnerability = value; }
     public float TimeNoDamage { get => _timeNoDamage; set => _timeNoDamage = value; }
 
     [Header ("PlayerHealth settings")]
-    [SerializeField] private bool _IsInvulnerability;
+    [SerializeField] private bool _isInvulnerability;
     [SerializeField] private float _timeNoDamage;
 
     public IEnumerator TimerNoDamge(float time)
     {
-        throw new NotImplementedException();
+        _isInvulnerability = true;
+        yield return new WaitForSeconds(time);
+        _isInvulnerability = false;
     }
 
     public override void GetDamage(int damage)
