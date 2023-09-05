@@ -1,7 +1,8 @@
 fileFormatVersion: 2
-guid: b768aa388cf9d2543a8b6e413d7c5ca1
+guid: f535414ee94d90e47bdcd504ccbf335c
 labels:
-- Ui
+- Bullet
+- Player
 PrefabImporter:
   externalObjects: {}
   userData: 

@@ -1,7 +1,8 @@
 fileFormatVersion: 2
-guid: b768aa388cf9d2543a8b6e413d7c5ca1
+guid: 248e4df284c85c048aaa5e26b38e903c
 labels:
-- Ui
+- Entity
+- Trap
 PrefabImporter:
   externalObjects: {}
   userData: 

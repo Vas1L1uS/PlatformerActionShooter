@@ -1,7 +1,8 @@
 fileFormatVersion: 2
-guid: b768aa388cf9d2543a8b6e413d7c5ca1
+guid: c7d8b5ef095ec1642b119b16564afe79
 labels:
-- Ui
+- Entity
+- Item
 PrefabImporter:
   externalObjects: {}
   userData: 

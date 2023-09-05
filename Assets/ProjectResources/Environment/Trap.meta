@@ -1,8 +1,9 @@
 fileFormatVersion: 2
-guid: b768aa388cf9d2543a8b6e413d7c5ca1
+guid: 3a237dd32aec40a479fc577fe8141db7
 labels:
-- Ui
-PrefabImporter:
+- Trap
+folderAsset: yes
+DefaultImporter:
   externalObjects: {}
   userData: 
   assetBundleName: 

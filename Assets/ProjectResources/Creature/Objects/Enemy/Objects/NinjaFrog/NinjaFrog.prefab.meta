@@ -1,7 +1,10 @@
 fileFormatVersion: 2
-guid: b768aa388cf9d2543a8b6e413d7c5ca1
+guid: b3dd55b1e29ab79468466cfb46023c5e
 labels:
-- Ui
+- Character
+- Creature
+- Enemy
+- Entity
 PrefabImporter:
   externalObjects: {}
   userData: 
