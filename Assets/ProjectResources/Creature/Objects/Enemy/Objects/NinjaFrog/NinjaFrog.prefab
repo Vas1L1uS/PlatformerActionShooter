@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 5
+  _DieParticle: {fileID: 3610049058732067659, guid: fa58b75faff2f6e42a72f68752a4d504, type: 3}
   _enabledPrintDebugLogInEditor: 0
   _enabledAddingLogs: 0
   _currentHealth: 0

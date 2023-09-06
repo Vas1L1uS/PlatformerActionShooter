@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerHealth : CreatureHealth, IHaveInvulnerability
 {
-    public override event EventHandler GetDamage_notifier;
+    public override event EventHandler<IntValueEventArgs> GetDamage_notifier;
 
     public bool IsInvulnerability { get => _isInvulnerability; set => _isInvulnerability = value; }
     public float TimeNoDamage { get => _timeNoDamage; set => _timeNoDamage = value; }
@@ -38,7 +38,7 @@ public class PlayerHealth : CreatureHealth, IHaveInvulnerability
         {
             var previousHealthPoints = CurrentHealth;
             CurrentHealth -= damage;
-            GetDamage_notifier?.Invoke(this, EventArgs.Empty);
+            GetDamage_notifier?.Invoke(this, new IntValueEventArgs() { Value = damage });
             StartCoroutine(TimerNoDamge(TimeNoDamage));
 
             PrintLogInEditor($"{this.gameObject.name} received {damage} damage. Was {previousHealthPoints} health, current {CurrentHealth}, max {MaxHealth}. Removed {previousHealthPoints - CurrentHealth} HP.");

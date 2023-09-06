@@ -113,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _senderTag: Enemy
   _trackParticleSystem: {fileID: 6518860327885140029}
-  _boomParticleSystem: {fileID: 177192125789944443, guid: 8dac8c7127344c84f9eef1d4eccf6ded, type: 3}
+  _boomParticleSystem: {fileID: 177192125789944443, guid: 00e78f695d3b6ab47922976060225d41, type: 3}
   _damage: 1
   _timerToDestroy: 1
   _render: {fileID: 8348902548486647174}

@@ -1,6 +1,7 @@
 using System;
+using System.Collections;
 using UnityEngine;
-public class EnemyController : MonoBehaviour 
+public class EnemyController : MonoBehaviour
 {
     [SerializeField] private NPCMovement _movement;
     [SerializeField] private NPCVision _vision;
@@ -12,11 +13,12 @@ public class EnemyController : MonoBehaviour
     [Header("Debug")]
     [SerializeField] private EnemyState _currentState = EnemyState.Idle;
 
+    private ShootAttack _shootAttack;
     private Rigidbody2D _myRB;
     private bool _isFlipped;
     private IAttack _attack;
 
-    private ShootAttack _shootAttack;
+    private Coroutine _flickerGetDamage_coroutine;
 
     private void Awake()
     {
@@ -24,6 +26,7 @@ public class EnemyController : MonoBehaviour
         _attack = _attack_gameobject.GetComponent<IAttack>();
         _attack.StartedAttack_notifier += StopMove;
         _attack.FinishedAttack_notifier += SetIdleState;
+        _health.GetDamage_notifier += GetDamage;
 
         if (_attack is ShootAttack)
         {
@@ -129,6 +132,24 @@ public class EnemyController : MonoBehaviour
     private void StopMove(object sender, EventArgs e)
     {
         _movement.StopMove();
+    }
+
+    private void GetDamage(object sender, EventArgs e)
+    {
+        _flickerGetDamage_coroutine = StartCoroutine(TimerFlicker(0.1f));
+    }
+
+    private IEnumerator TimerFlicker(float time)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            _spriteRenderer.color = new Color(1, 0.5f, 0.5f, 0.75f);
+            yield return new WaitForSeconds(time);
+            _spriteRenderer.color = new Color(1, 0, 0, 0.25f);
+            yield return new WaitForSeconds(time);
+        }
+
+        _spriteRenderer.color = new Color(1, 1, 1, 1);
     }
 
     enum EnemyState

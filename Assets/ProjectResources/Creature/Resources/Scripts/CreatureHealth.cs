@@ -5,8 +5,8 @@ using UnityEngine;
 public class CreatureHealth : MonoBehaviour, IHealth, IDebugLogger
 {
     public virtual event EventHandler Dead_notifier;
-    public virtual event EventHandler GetDamage_notifier;
-    public virtual event EventHandler GetHealth_notifier;
+    public virtual event EventHandler<IntValueEventArgs> GetDamage_notifier;
+    public virtual event EventHandler<IntValueEventArgs> GetHealth_notifier;
 
     /// <summary>
     /// Only read
@@ -36,6 +36,7 @@ public class CreatureHealth : MonoBehaviour, IHealth, IDebugLogger
     public bool EnabledAddingLogs { get => _enabledAddingLogs; set => _enabledAddingLogs = value; }
 
     [SerializeField] private int _maxHealth;
+    [SerializeField] private GameObject _DieParticle;
 
     [Header("Debug")]
     [SerializeField] private bool _enabledPrintDebugLogInEditor;
@@ -63,7 +64,8 @@ public class CreatureHealth : MonoBehaviour, IHealth, IDebugLogger
         {
             var previousHealthPoints = CurrentHealth;
             CurrentHealth -= damage;
-            GetDamage_notifier?.Invoke(this, EventArgs.Empty);
+
+            GetDamage_notifier?.Invoke(this, new IntValueEventArgs() { Value = damage });
 
             PrintLogInEditor($"{this.gameObject.name} received {damage} damage. Was {previousHealthPoints} health, current {CurrentHealth}, max {MaxHealth}. Removed {previousHealthPoints - CurrentHealth} HP.");
         }
@@ -79,7 +81,7 @@ public class CreatureHealth : MonoBehaviour, IHealth, IDebugLogger
         {
             var previousHealthPoints = CurrentHealth;
             CurrentHealth += health;
-            GetHealth_notifier?.Invoke(this, EventArgs.Empty);
+            GetHealth_notifier?.Invoke(this, new IntValueEventArgs() { Value = health });
 
             PrintLogInEditor($"{this.gameObject.name} received {health} health. Was {previousHealthPoints} health, current {CurrentHealth}, max {MaxHealth}. Added {CurrentHealth - previousHealthPoints} HP.");
         }
@@ -89,10 +91,11 @@ public class CreatureHealth : MonoBehaviour, IHealth, IDebugLogger
     {
         _isAlive = false;
         Dead_notifier?.Invoke(this, EventArgs.Empty);
-
-        Destroy(this.gameObject);
+        Instantiate(_DieParticle, this.transform.position, Quaternion.identity);
 
         PrintLogInEditor($"{this.gameObject.name} killed.");
+
+        Destroy(this.gameObject);
     }
 
     public void PrintLogInEditor(string text)
