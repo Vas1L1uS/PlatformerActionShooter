@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using UnityEngine;
+
+[SelectionBase]
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] private NPCMovement _movement;

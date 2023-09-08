@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+[SelectionBase]
 public class PlayerController : MonoBehaviour
 {
     public PlayerAnimState PlayerState

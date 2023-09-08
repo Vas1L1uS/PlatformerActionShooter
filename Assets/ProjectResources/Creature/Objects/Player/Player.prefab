@@ -41,7 +41,7 @@ AudioSource:
   m_GameObject: {fileID: 1193513820634514184}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5281713009652586262, guid: 2ee31426e4e4ebb428ff7331cadb3dc1, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -242,7 +242,7 @@ Transform:
   m_GameObject: {fileID: 2826195640457887790}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.48, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
-  _jumpForce: 9
+  _jumpForce: 9.2
   _shootAttack: {fileID: 9106312508332569922}
   _groundChecker: {fileID: 6493225314080400644}
   _groundMask:
@@ -294,7 +294,7 @@ MonoBehaviour:
   _bulletSpawnPoint: {fileID: 8197800239187644314}
   _bullet_prefab: {fileID: 3415692725524921866, guid: f535414ee94d90e47bdcd504ccbf335c, type: 3}
   _bulletSpeed: 10
-  _maxStockBullet: 3
+  _maxStockBullet: 5
   _reloadTime: 2
   _distanceToStartAttack: 0
   _targetTags: []
@@ -634,7 +634,7 @@ AudioSource:
   m_GameObject: {fileID: 8843145005186822863}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5281713009652586262, guid: 2ee31426e4e4ebb428ff7331cadb3dc1, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
