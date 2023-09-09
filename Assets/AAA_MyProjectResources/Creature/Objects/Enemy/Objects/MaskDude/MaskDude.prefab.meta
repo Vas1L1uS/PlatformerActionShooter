@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: d1695745de38f0440a86398e6e890adc
+labels:
+- Character
+- Creature
+- Enemy
+- Entity
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
